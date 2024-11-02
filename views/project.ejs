@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= project.title %></title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '' }) %>
+    <h1><%= project.title %></h1>
+    <p><%= project.intro_short %></p>
+    <img src="<%= project.feature_img_url %>" alt="Project Image">
+    <p>Impact: <%= project.impact %></p>
+    <a href="<%= project.original_source_url %>">More info</a>
+    <button onclick="history.back();">Back</button>
+    <div>
+        <p id="quote"></p>
+        <p id="author"></p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://dummyjson.com/quotes/random")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("quote").textContent = data.quote;
+                    document.getElementById("author").textContent = `- ${data.author}`;
+                });
+        });
+    </script>
+</body>
+</html>

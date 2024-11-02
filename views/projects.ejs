@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <%- include('partials/navbar', { page: '/solutions/projects' }) %>
+    <h1>Projects</h1>
+    <table>
+        <% projects.forEach(project => { %>
+            <tr>
+                <td><%= project.title %></td>
+                <td><a href="/solutions/projects?sector=<%= project.sector %>"><%= project.sector %></a></td>
+                <td><%= project.summary_short %></td>
+                <td><a href="/solutions/projects/<%= project.id %>">Details</a></td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
